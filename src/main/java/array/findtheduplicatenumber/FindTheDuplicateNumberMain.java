@@ -3,7 +3,7 @@ package array.findtheduplicatenumber;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Main {
+public class FindTheDuplicateNumberMain {
 
     public static void main(String[] args) {
         System.out.println(findDuplicate(new int[] {1,3,4,2,2})); // 2
