@@ -13,25 +13,18 @@ public class RomanToIntMain {
     public static int romanToInt(String s) {
         int result = 0;
         for(int i = 0; i < s.length(); i++) {
-            // check 6 instances subtraction
-            if (i++ < s.length()) {
-                String string = String.valueOf(s.charAt(i + 1));
-                if (string.equals("CM")
-                        || string.equals("CD")
-                        || string.equals("XC")
-                        || string.equals("IV")) {
-                    result += symbolToValueSpecial().get(String.valueOf(s.charAt(i)));
-                    i++;
-                }
+            if (i+1 < s.length()
+                    && getNumberBySymbol().get(String.valueOf(s.charAt(i)))
+                    < getNumberBySymbol().get(String.valueOf(s.charAt(i+1)))) {
+                result -= getNumberBySymbol().get(String.valueOf(s.charAt(i)));
             } else {
-                result += symbolToValue().get(String.valueOf(s.charAt(i)));
+                result += getNumberBySymbol().get(String.valueOf(s.charAt(i)));
             }
         }
-
         return result;
     }
 
-    public static Map<String, Integer> symbolToValue() {
+    public static Map<String, Integer> getNumberBySymbol() {
         Map<String, Integer> map = new HashMap<>();
         map.put("I", 1);
         map.put("V", 5);
@@ -43,11 +36,4 @@ public class RomanToIntMain {
         return map;
     }
 
-    public static Map<String, Integer> symbolToValueSpecial() {
-        Map<String, Integer> map = new HashMap<>();
-        map.put("CM", 900);
-        map.put("XC", 90);
-        map.put("IV", 4);
-        return map;
-    }
 }
