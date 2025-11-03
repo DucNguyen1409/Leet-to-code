@@ -1,5 +1,10 @@
 package functionalinterface;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class functional {
 
     // code truyền thống
@@ -29,7 +34,12 @@ public class functional {
         // method reference
         System.out.println(transform("nguyenDuc", String::toLowerCase));
 
-        System.out.println();
+        List<List<String>> list = Arrays.asList(
+                Arrays.asList("a"),
+                Arrays.asList("b"));
+        System.out.println(list);
+
+        System.out.println(list.stream().flatMap(Collection::stream).collect(Collectors.toList()));
     }
 
 }
